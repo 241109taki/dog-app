@@ -11,6 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+       - name: チェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.js 24 をセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+          
       - name: 依存関係のインストール
         run: npm ci
 
