@@ -1,0 +1,21 @@
+name: React CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 依存関係のインストール
+        run: npm ci
+
+      - name: テストの実行
+        run: npm run test
+
+      - name: ビルドチェック
+        run: npm run build

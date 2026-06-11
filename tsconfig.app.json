@@ -19,7 +19,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "types": ["@testing-library/jest-dom"]
   },
-  "include": ["src"]
+  "include": ["src", "src/**/*.d.ts"]
 }
