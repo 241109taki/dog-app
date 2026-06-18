@@ -36,7 +36,6 @@ describe('毎日わんこアプリのコンポーネントテスト', () => {
   it('初期状態でお気に入り一覧のグリッドが存在すること', () => {
     render(<App />);
 
-    const favoritesGrid = screen.queryByTestId('favorites-grid');
     expect(screen.getByText('まだお気に入りがありません。上のボタンから追加してください。')).toBeInTheDocument();
   });
 
