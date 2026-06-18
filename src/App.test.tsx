@@ -9,7 +9,8 @@ describe('毎日わんこアプリのコンポーネントテスト', () => {
     render(<App />);
     
     // タイトルの確認
-    expect(screen.getByText('毎日わんこ 🐶')).toBeInTheDocument();
+    expect(screen.getByText('🐶🐶🐶')).toBeInTheDocument();
+    expect(screen.getByText(/マイわんこ図鑑/)).toBeInTheDocument();
     
     // ラベルとセレクトボックスの確認
     expect(screen.getByLabelText('犬種を選ぶ:')).toBeInTheDocument();
@@ -26,5 +27,12 @@ describe('毎日わんこアプリのコンポーネントテスト', () => {
     const loadingText = screen.getByTestId('loading-text');
     expect(loadingText).toBeInTheDocument();
     expect(loadingText).toHaveTextContent('くんくん…探索中…');
+  });
+
+  it('初期状態でお気に入り一覧のグリッドが存在すること', () => {
+    render(<App />);
+    
+    const favoritesGrid = screen.getByTestId('favorites-grid');
+    expect(favoritesGrid).toBeInTheDocument();
   });
 });
