@@ -1,73 +1,27 @@
-# React + TypeScript + Vite
+# 🐶🐶🐶 (Dog API Web app)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dog API を利用して、様々な犬種のランダム画像を表示・検索し、自分だけの「わんこ図鑑」を作成できるWebアプリケーションです。
 
-Currently, two official plugins are available:
+## 公開URL
+* **Vercel デプロイ先**: https://dog-app-kappa-blond.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## CI/CD（自動化）について
+* **GitHub Actions & Vercel 連携**: GitHubにコードをプッシュするだけで、GitHub Actionsが自動テスト（Vitest）を実行してコードの安全性を検証し、パスすると自動的にVercelへ最新版のアプリがデプロイ・公開される仕組み（CI/CD）を構築しています。
 
-## React Compiler
+## 機能説明
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. ランダム画像表示機能
+* アプリ起動時、および「他の犬を見る」ボタンをクリックした際に、Dog API からランダムに取得された可愛い犬の画像が画面中央に表示されます。
 
-## Expanding the ESLint configuration
+### 2. 犬種別フィルター（検索）機能
+* セレクトボックスから特定の犬種を選択して、その犬種だけの画像を絞り込んで表示（フェッチ）することができます。
+* APIから取得できる英語の犬種名を、アプリ内部の対応辞書によって分かりやすい「日本語（カタカナ）表記」に変換してリスト表示しています。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. マイわんこ図鑑（お気に入り保存）機能
+* 気に入った犬の画像を見つけたら、「お気に入りに追加」ボタンを押すことで、画面下部の「マイわんこ図鑑」エリアにサムネイルとして一覧保存できます。
+* データの保存にはブラウザの **LocalStorage** を使用しているため、画面をリロードしたりブラウザを一度閉じたりしても、保存した図鑑のデータが消えずに保持されます。
+* 図鑑内のサムネイルの右上にある「✕」ボタンから、いつでも図鑑から削除することができます。
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 4. モーダル拡大表示機能
+* 「マイわんこ図鑑」に追加されたサムネイル画像をクリックすると、画面全体に暗い背景（バックドロップ）とともに、画像が大きなサイズでポップアップ表示（モーダル表示）されます。
+* モーダル内の「✕」ボタン、または画像の背景部分をクリックすることで、簡単にモーダルを閉じることができます。
