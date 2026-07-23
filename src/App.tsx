@@ -2,8 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import { useFavorites } from './hooks/userFavorites';
 import { Header } from './components/Header'
-import { BreedSelect } from './components/BreedSelect';
-import { DogViewer } from './components/DogViewer';
 import { Layout } from './components/Layout';
 import { MainContainer } from './components/MainContainer';
 import { FavoriteList } from './components/FavoriteList';
